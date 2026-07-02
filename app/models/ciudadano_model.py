@@ -2,6 +2,7 @@ import uuid
 import json
 from datetime import datetime, date
 from typing import Optional
+from uuid import UUID
 from sqlmodel import SQLModel, Field
 from sqlalchemy import TypeDecorator, VARCHAR, TEXT, String
 from sqlalchemy.dialects.sqlite import TEXT as SQLITE_TEXT
@@ -36,7 +37,7 @@ class VectorJson(TypeDecorator):
 class CiudadanoReportado(SQLModel, table=True):
     __tablename__ = "ciudadanos_reportados"
 
-    id: uuid.UUID = Field(
+    id: UUID = Field(
         default_factory=uuid.uuid4,
         primary_key=True,
         nullable=False,
