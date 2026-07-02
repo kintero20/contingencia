@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.env
+uploads/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.db
+sbeup.db
+requirements.txt
+README.md
+INFORME_TECNICO.md
