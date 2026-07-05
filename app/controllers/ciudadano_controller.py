@@ -1,4 +1,3 @@
-import uuid
 import logging
 from typing import List
 
@@ -81,7 +80,7 @@ async def listar_ciudadanos(
 
 @router.get("/{ciudadano_id}", response_model=CiudadanoResponse)
 async def obtener_ciudadano(
-    ciudadano_id: uuid.UUID,
+    ciudadano_id: str,
     session: AsyncSession = Depends(get_session),
 ):
     service = CiudadanoService(session)
@@ -93,7 +92,7 @@ async def obtener_ciudadano(
 
 @router.put("/{ciudadano_id}", response_model=CiudadanoResponse)
 async def actualizar_ciudadano(
-    ciudadano_id: uuid.UUID,
+    ciudadano_id: str,
     data: CiudadanoUpdate,
     session: AsyncSession = Depends(get_session),
 ):
@@ -106,7 +105,7 @@ async def actualizar_ciudadano(
 
 @router.delete("/{ciudadano_id}", response_model=MensajeResponse)
 async def eliminar_ciudadano(
-    ciudadano_id: uuid.UUID,
+    ciudadano_id: str,
     session: AsyncSession = Depends(get_session),
 ):
     service = CiudadanoService(session)

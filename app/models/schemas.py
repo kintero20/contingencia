@@ -1,4 +1,3 @@
-import uuid
 from datetime import date, datetime
 from typing import Optional, List
 from pydantic import BaseModel, Field
@@ -35,7 +34,7 @@ class CiudadanoUpdate(BaseModel):
 
 
 class CiudadanoResponse(BaseModel):
-    id: uuid.UUID
+    id: str
     cedula: Optional[str] = None
     nombre: Optional[str] = None
     apellido: Optional[str] = None
@@ -56,7 +55,7 @@ class CiudadanoResponse(BaseModel):
 
 
 class CiudadanoSearchResult(BaseModel):
-    id: uuid.UUID
+    id: str
     cedula: Optional[str] = None
     nombre: Optional[str] = None
     apellido: Optional[str] = None

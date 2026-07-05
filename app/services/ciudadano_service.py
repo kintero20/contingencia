@@ -1,7 +1,7 @@
 import uuid
 import os
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional, List, Tuple
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -100,12 +100,12 @@ class CiudadanoService:
         return search_results
 
     async def obtener_ciudadano(
-        self, ciudadano_id: uuid.UUID
+        self, ciudadano_id: str
     ) -> Optional[CiudadanoReportado]:
         return await self.repo.get_by_id(ciudadano_id)
 
     async def actualizar_ciudadano(
-        self, ciudadano_id: uuid.UUID, data: CiudadanoUpdate
+        self, ciudadano_id: str, data: CiudadanoUpdate
     ) -> Optional[CiudadanoReportado]:
         ciudadano = await self.repo.get_by_id(ciudadano_id)
         if not ciudadano:
@@ -115,11 +115,11 @@ class CiudadanoService:
         for field, value in update_data.items():
             setattr(ciudadano, field, value)
 
-        ciudadano.updated_at = datetime.utcnow()
+        ciudadano.updated_at = datetime.now(timezone.utc)
         return await self.repo.update(ciudadano)
 
     async def eliminar_ciudadano(
-        self, ciudadano_id: uuid.UUID
+        self, ciudadano_id: str
     ) -> bool:
         return await self.repo.delete(ciudadano_id)
 

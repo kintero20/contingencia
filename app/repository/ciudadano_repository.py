@@ -1,4 +1,3 @@
-import uuid
 import json
 import math
 from typing import Optional, List, Tuple
@@ -30,7 +29,7 @@ class CiudadanoRepository:
         await self.session.refresh(ciudadano)
         return ciudadano
 
-    async def get_by_id(self, ciudadano_id: uuid.UUID) -> Optional[CiudadanoReportado]:
+    async def get_by_id(self, ciudadano_id: str) -> Optional[CiudadanoReportado]:
         result = await self.session.get(CiudadanoReportado, ciudadano_id)
         return result
 
@@ -49,7 +48,7 @@ class CiudadanoRepository:
         await self.session.refresh(ciudadano)
         return ciudadano
 
-    async def delete(self, ciudadano_id: uuid.UUID) -> bool:
+    async def delete(self, ciudadano_id: str) -> bool:
         ciudadano = await self.get_by_id(ciudadano_id)
         if ciudadano:
             await self.session.delete(ciudadano)
