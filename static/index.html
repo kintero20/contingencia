@@ -756,8 +756,8 @@
         const r = await api('POST', '/busqueda/facial?limite=20&umbral=0.3', fd);
         $('search-results').classList.remove('hide');
         const list = $('results-list');
-        if (!r || r.length === 0) { list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gray)">No se encontraron coincidencias</div>'; return }
-        list.innerHTML = r.map(p => `<div class="result-item" onclick="mostrarDetalle({id:'${p.id}'})">
+        if (!r.resultados || r.resultados.length === 0) { list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gray)"><strong>No encontrado</strong><br><br>No se encontraron coincidencias faciales. Intente con otra foto o reduzca el umbral.</div>'; return }
+        list.innerHTML = r.resultados.map(p => `<div class="result-item" onclick="mostrarDetalle({id:'${p.id}'})">
       <div style="display:flex;gap:12px;align-items:center">
         <div style="flex:1"><div class="result-name">${p.nombre || ''} ${p.apellido || ''}</div><div class="result-cedula">${p.cedula || ''}</div></div>
         <div><div class="similarity">${(p.similitud * 100).toFixed(1)}%</div><div class="result-status status-${p.estado_salud || 'estable'}">${p.estado_salud || 'N/A'}</div></div>
