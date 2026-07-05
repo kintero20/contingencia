@@ -1,0 +1,14 @@
+.venv
+.git
+__pycache__
+*.pyc
+.env
+sbeup.db
+uploads
+.pytest_cache
+.gitignore
+runtime.txt
+README.md
+INFORME_TECNICO.md
+docker-compose.yml
+alembic
