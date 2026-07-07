@@ -1,5 +1,10 @@
-const CACHE = "sbeup-v1";
-const STATIC_FILES = ["/static/index.html", "/offline"];
+const CACHE = "sbeup-v2";
+const STATIC_FILES = [
+  "/static/index.html",
+  "/static/css/style.css",
+  "/static/js/app.js",
+  "/offline"
+];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
