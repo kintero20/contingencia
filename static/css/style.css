@@ -21,7 +21,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--light);
-  color: var(--dark);
+  color: var(--light);
   padding-bottom: 70px;
   min-height: 100vh
 }
@@ -424,7 +424,7 @@ textarea {
   }
 }
 
-@media(prefers-color-scheme: dark) {
+@media(prefers-color-scheme: light) {
   :root {
     --dark: #f3f4f6;
     --gray: #9ca3af;
